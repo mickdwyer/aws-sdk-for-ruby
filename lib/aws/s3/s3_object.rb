@@ -588,8 +588,14 @@ module AWS
         copy_opts[:server_side_encryption] =
           options[:server_side_encryption] if
           options.key?(:server_side_encryption)
-        copy_opts[:cache_control] = options[:cache_control] if 
-          options[:cache_control]
+        if options[:cache_control]
+          copy_opts[:cache_control] = options[:cache_control]
+          copy_opts[:metadata_directive] = "REPLACE"
+        end
+        if options[:expires]
+          copy_opts[:expires] = options[:expires]
+          copy_opts[:metadata_directive] = "REPLACE"
+        end
         add_configured_write_options(copy_opts)
 
         if options[:reduced_redundancy]
