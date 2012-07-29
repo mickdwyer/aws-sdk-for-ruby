@@ -1072,6 +1072,7 @@ module AWS
         :storage_class => 'x-amz-storage-class',
         :server_side_encryption => 'x-amz-server-side-encryption',
         :content_type => 'Content-Type',
+        :expires => 'Expires',
       }) do
 
         configure_request do |req, options|
