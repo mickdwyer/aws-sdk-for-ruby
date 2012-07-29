@@ -757,6 +757,8 @@ module AWS
             'x-amz-version-id' => :version_id,
             'content-type' => :content_type,
             'etag' => :etag,
+            'cache-control' => :cache_control,
+            'expires' => :expires
           }.each_pair do |header,method|
             resp.data[method] = resp.http_response.header(header)
           end
